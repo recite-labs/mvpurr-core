@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace ReciteLabs\MvpurrCore\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MvpurrCoreCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'mvpurr-core';
 
     public $description = 'My command';
 

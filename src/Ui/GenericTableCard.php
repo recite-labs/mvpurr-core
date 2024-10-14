@@ -11,8 +11,6 @@ class GenericTableCard
         public string $description,
         public array $headers,
         public array $data,
-        public $align = "left"
-    )
-    {
-    }
+        public $align = 'left'
+    ) {}
 }

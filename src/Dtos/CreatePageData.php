@@ -4,6 +4,7 @@ namespace ReciteLabs\MvpurrCore\Dtos;
 
 class CreatePageData
 {
-    public string $title = "";
-    public string $description = "";
+    public string $title = '';
+
+    public string $description = '';
 }

@@ -7,9 +7,7 @@ class ActionButtonData
     public function __construct(
         public string $label,
         public string $url,
-        public string $method = "post",
+        public string $method = 'post',
         public bool $isQuick = false,
-    )
-    {
-    }
+    ) {}
 }

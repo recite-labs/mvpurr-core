@@ -6,13 +6,17 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class IndexPageData
 {
-    public string $title = "";
-    public string $description = "";
+    public string $title = '';
+
+    public string $description = '';
+
     /*
      * @return array<TableHeader>
      */
     public array $header = [];
+
     public AnonymousResourceCollection $data;
+
     /*
      * @return array<ActionButtonData>
      */

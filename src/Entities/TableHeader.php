@@ -8,5 +8,5 @@ class TableHeader
         public string $id,
         public string $label,
         public TableColumnType $type,
-    ) { }
+    ) {}
 }

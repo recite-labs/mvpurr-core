@@ -13,12 +13,18 @@ use ReciteLabs\MvpurrCore\Traits\Crudable;
 abstract class CoreController
 {
     use Crudable;
-    protected $app = "";
+
+    protected $app = '';
+
     protected IndexPageData $indexPageData;
+
     protected CreatePageData $createPageData;
+
     protected ShowPageData $showPageData;
+
     protected EditPageData $editPageData;
-    abstract function menu();
+
+    abstract public function menu();
 
     /**
      * Display a listing of the resource.
@@ -33,11 +39,11 @@ abstract class CoreController
             'table' => [
                 'data' => $this->indexPageData->data,
                 'header' => $this->indexPageData->header,
-                'actions' => $this->indexPageData->actions
+                'actions' => $this->indexPageData->actions,
             ],
             'links' => [
                 'createUrl' => $this->create_url ?? null,
-            ]
+            ],
         ]);
     }
 
@@ -47,6 +53,7 @@ abstract class CoreController
     public function create()
     {
         $view = $this->create_view ?? app('mvpurr')->theme.'/Crud/Create';
+
         return Inertia::render($view, [
             'app' => $this->app,
             'menu' => $this->menu(),
@@ -69,6 +76,7 @@ abstract class CoreController
     public function show($id)
     {
         $view = $this->show_view ?? app('mvpurr')->theme.'/Crud/Show';
+
         return Inertia::render($view, [
             'app' => $this->app,
             'menu' => $this->menu(),
@@ -82,6 +90,7 @@ abstract class CoreController
     public function edit($id)
     {
         $view = $this->show_view ?? app('mvpurr')->theme.'/Crud/Edit';
+
         return Inertia::render($view, [
             'app' => $this->app,
             'menu' => $this->menu(),

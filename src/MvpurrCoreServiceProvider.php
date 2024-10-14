@@ -2,10 +2,10 @@
 
 namespace ReciteLabs\MvpurrCore;
 
+use ReciteLabs\MvpurrCore\Commands\MvpurrCoreCommand;
 use ReciteLabs\MvpurrCore\Entities\Mvpurr;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ReciteLabs\MvpurrCore\Commands\MvpurrCoreCommand;
 
 class MvpurrCoreServiceProvider extends PackageServiceProvider
 {
@@ -26,9 +26,10 @@ class MvpurrCoreServiceProvider extends PackageServiceProvider
 
     public function register()
     {
-        $this->app->singleton('mvpurr', function($app){
-            return new Mvpurr();
+        $this->app->singleton('mvpurr', function ($app) {
+            return new Mvpurr;
         });
+
         return parent::register();
     }
 }

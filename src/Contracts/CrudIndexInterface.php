@@ -4,5 +4,5 @@ namespace ReciteLabs\MvpurrCore\Contracts;
 
 interface CrudIndexInterface
 {
-    function loadIndexData();
+    public function loadIndexData();
 }

@@ -8,6 +8,5 @@ class StatCard
         public string $title,
         public string $subtitle,
         public string $figure
-    )
-    { }
+    ) {}
 }

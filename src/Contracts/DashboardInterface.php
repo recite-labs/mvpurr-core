@@ -4,5 +4,5 @@ namespace ReciteLabs\MvpurrCore\Contracts;
 
 interface DashboardInterface
 {
-    function loadDashData();
+    public function loadDashData();
 }

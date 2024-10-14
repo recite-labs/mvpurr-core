@@ -11,6 +11,5 @@ class Menu
         public string $link,
         public string $name,
         public ?array $children,
-    ) { }
-
+    ) {}
 }

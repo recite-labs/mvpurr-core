@@ -8,7 +8,5 @@ class FormField
         public string $label,
         public FieldType $type,
         public $value,
-    )
-    {
-    }
+    ) {}
 }

@@ -2,7 +2,6 @@
 
 namespace ReciteLabs\MvpurrCore;
 
-use Modules\Win\Providers\WinServiceProvider;
 use ReciteLabs\MvpurrCore\Commands\Generators\GenerateBaseController;
 use ReciteLabs\MvpurrCore\Commands\Generators\GenerateController;
 use ReciteLabs\MvpurrCore\Commands\Generators\GenerateModule;
@@ -46,11 +45,9 @@ class MvpurrCoreServiceProvider extends PackageServiceProvider
             foreach ($modules->modules as $module) {
                 $this->app->register($module->provider);
             }
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             // TODO
         }
-
-
 
         return parent::register();
     }

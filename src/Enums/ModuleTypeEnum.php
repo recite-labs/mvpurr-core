@@ -9,22 +9,23 @@ enum ModuleTypeEnum: int
 
     public function label()
     {
-        switch ($this){
+        switch ($this) {
             case self::MODULE:
-                return "Module";
+                return 'Module';
             case self::APP:
-                return "App";
+                return 'App';
         }
     }
 
-    public static function fromLabel($label){
-        switch ($label){
-            case "Module":
+    public static function fromLabel($label)
+    {
+        switch ($label) {
+            case 'Module':
                 return self::MODULE;
-            case "App":
+            case 'App':
                 return self::APP;
             default:
-                throw new \Exception("whaat?");
+                throw new \Exception('whaat?');
         }
     }
 }

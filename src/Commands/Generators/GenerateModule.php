@@ -1,6 +1,7 @@
 <?php
 
 namespace ReciteLabs\MvpurrCore\Commands\Generators;
+
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
@@ -30,11 +31,12 @@ class GenerateModule extends Command
         $moduleName = $this->argument('name');
 
         // Define the path where the module will be created
-        $modulePath = base_path('Modules/' . $moduleName);
+        $modulePath = base_path('Modules/'.$moduleName);
 
         // Check if the module already exists
         if ($this->files->isDirectory($modulePath)) {
             $this->error("Module '{$moduleName}' already exists!");
+
             return;
         }
 
@@ -50,7 +52,6 @@ class GenerateModule extends Command
         Artisan::call('make:base-controller '.$moduleName);
         Artisan::call('make:controller IndexController --module='.$moduleName);
     }
-
 
     // Helper function to create the directory structure
     protected function createModuleDirectories($modulePath)

@@ -2,7 +2,12 @@
 
 namespace ReciteLabs\MvpurrCore;
 
+use Modules\Win\Providers\WinServiceProvider;
+use ReciteLabs\MvpurrCore\Commands\Generators\GenerateBaseController;
+use ReciteLabs\MvpurrCore\Commands\Generators\GenerateController;
+use ReciteLabs\MvpurrCore\Commands\Generators\GenerateModule;
 use ReciteLabs\MvpurrCore\Commands\MvpurrCoreCommand;
+use ReciteLabs\MvpurrCore\Commands\NewPurrCommand;
 use ReciteLabs\MvpurrCore\Entities\Mvpurr;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -21,7 +26,13 @@ class MvpurrCoreServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_mvpurr_core_table')
-            ->hasCommand(MvpurrCoreCommand::class);
+            ->hasCommands([
+                MvpurrCoreCommand::class,
+                NewPurrCommand::class,
+                GenerateModule::class,
+                GenerateBaseController::class,
+                GenerateController::class,
+            ]);
     }
 
     public function register()
@@ -29,6 +40,17 @@ class MvpurrCoreServiceProvider extends PackageServiceProvider
         $this->app->singleton('mvpurr', function ($app) {
             return new Mvpurr;
         });
+        // register all modules
+        try {
+            $modules = json_decode(file_get_contents(base_path('modules.json')));
+            foreach ($modules->modules as $module) {
+                $this->app->register($module->provider);
+            }
+        }catch (\Exception $exception){
+            // TODO
+        }
+
+
 
         return parent::register();
     }

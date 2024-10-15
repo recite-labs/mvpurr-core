@@ -1,0 +1,89 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Http\Request;
+use ReciteLabs\MvpurrCore\Dtos\EditPageData;
+use ReciteLabs\MvpurrCore\Dtos\IndexPageData;
+use ReciteLabs\MvpurrCore\Dtos\ShowPageData;
+use ReciteLabs\MvpurrCore\Entities\TableColumnType;
+use ReciteLabs\MvpurrCore\Entities\TableHeader;
+use ReciteLabs\MvpurrCore\Enums\PublicationStatusEnum;
+use ReciteLabs\MvpurrCore\Ui\ActionButtonData;
+use ReciteLabs\MvpurrCore\Ui\Badge;
+use ReciteLabs\MvpurrCore\Ui\ButtonCard;
+use ReciteLabs\MvpurrCore\Ui\FieldsCard;
+use ReciteLabs\MvpurrCore\Ui\FieldType;
+use ReciteLabs\MvpurrCore\Ui\FormField;
+use ReciteLabs\MvpurrCore\Ui\GenericTableCard;
+
+class $CLASS_NAME$ extends BaseController
+{
+    function index()
+    {
+        $this->indexPageData = new IndexPageData();
+        $this->indexPageData->title = "";
+        $this->indexPageData->description = "";
+        $this->indexPageData->header = [
+            new TableHeader(id: "id", label: "", type: TableColumnType::CHECKBOX),
+            new TableHeader(id: "title", label: "Day", type: TableColumnType::LINK),
+        ];
+//        $this->indexPageData->data = X::collection(DailyGame::orderBy('the_date', 'desc')->paginate());
+
+        return parent::index();
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([]);
+//        return redirect(route('', [''=> $id]));
+    }
+
+    public function show($id)
+    {
+//        $item = X::findOrFail($id);
+
+        $this->showPageData = new ShowPageData();
+        $this->showPageData->description = "";
+        $this->showPageData->badges = [];
+        $this->showPageData->actions = [
+//            new ActionButtonData(label: "Edit", url: route('', [''=>$id]))
+        ];
+        $this->showPageData->title = "";
+
+        $this->showPageData->cards = [
+            new FieldsCard(title: "", description: "", fields: [
+                new FormField(label: "", type: FieldType::TEXT_INPUT, value: ""),
+            ]),
+            new GenericTableCard(title: "", description: "", headers: [
+//                new TableHeader(id: "", label: "", type: TableColumnType::LINK),
+            ], data: []),
+        ];
+
+        return parent::show($id);
+    }
+
+    public function edit($id)
+    {
+//        $item = X::findOrFail($id);
+        $this->editPageData = new EditPageData();
+        $this->editPageData->description = "";
+        $this->editPageData->title = "";
+        $this->editPageData->badges = [];
+        $this->editPageData->cards = [
+            new FieldsCard(title: "Fields", description: "", fields: [
+//                new FormField(label: "", type: FieldType::TEXT_INPUT, value: ""),
+            ]),
+
+            new GenericTableCard(title: "", description: "", headers: [
+//                new TableHeader(id: "", label: "", type: TableColumnType::LINK),
+            ], data: []),
+
+            new ButtonCard(title: "" , description: ".", button: new ActionButtonData(
+                label: "", url: route('', [''=>$id]), method: "post", isQuick: true,
+            ), align: "right")
+        ];
+
+        return parent::edit($id);
+    }
+}

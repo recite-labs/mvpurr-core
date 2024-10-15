@@ -1,0 +1,31 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use ReciteLabs\MvpurrCore\Entities\Menu;
+use ReciteLabs\MvpurrCore\Http\Controllers\CoreController;
+
+abstract class BaseController extends CoreController
+{
+    protected $app = "$APP_NAME$";
+
+    /*
+     * return array
+     */
+    public function menu()
+    {
+        return [
+            new Menu(
+                id: 'dash',
+                label: 'Dashboard',
+                icon: '',
+                link: url('/accounts'),
+                name: 'accounts.dash',
+                children: []
+            ),
+            new Menu(id: 'index', label: 'Accounts', icon: '', link: route('accounts.index'), name: 'accounts.index',children: []),
+            new Menu(id: 'index2', label: 'Users', icon: '', link: route('accounts.index'), name: 'accounts.index',children: []),
+        ];
+    }
+}
+

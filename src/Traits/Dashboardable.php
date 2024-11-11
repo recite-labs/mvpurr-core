@@ -11,7 +11,9 @@ trait Dashboardable
 
     public function __invoke()
     {
-        return Inertia::render(app('mvpurr')->theme.'/Crud/Dash', [
+        return Inertia::render('Mvpurr', [
+            'theme' => app('mvpurr')->theme,
+            'page' => 'Crud/Dash',
             'data' => $this->data,
             'menu' => $this->menu(),
             'app' => $this->app,

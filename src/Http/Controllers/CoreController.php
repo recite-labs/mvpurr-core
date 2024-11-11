@@ -31,7 +31,9 @@ abstract class CoreController
      */
     public function index()
     {
-        return Inertia::render(app('mvpurr')->theme.'/Crud/Index', [
+        return Inertia::render('Mvpurr', [
+            'theme' => app('mvpurr')->theme,
+            'page' => 'Crud/Index',
             'app' => $this->app,
             'menu' => $this->menu(),
             'title' => $this->indexPageData->title,

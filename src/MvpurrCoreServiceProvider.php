@@ -23,8 +23,6 @@ class MvpurrCoreServiceProvider extends PackageServiceProvider
         $package
             ->name('mvpurr-core')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_mvpurr_core_table')
             ->hasCommands([
                 MvpurrCoreCommand::class,
                 NewPurrCommand::class,

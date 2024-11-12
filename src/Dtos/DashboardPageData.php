@@ -14,6 +14,8 @@ class DashboardPageData
      * @return StatCard[]
      */
     public array $stats = [];
+
     public array $tabs = [];
+
     public array $actions = [];
 }
